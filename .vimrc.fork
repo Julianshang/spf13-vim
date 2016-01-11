@@ -5,11 +5,22 @@
 "let g:winManagerWindowLayout = "BufExplorer,FileExplorer|TagList"
 "let g:winManagerWindowLayout = "FileExplorer|TagList"
 let g:NERDTree_title = "[NERDTree]"
-let g:winManagerWindowLayout = "NERDTree|TagList"
-" 这里要配合修改winmanager.vim文件"
-" let g:AutoOpenWinManager = 1 
+let g:winManagerWindowLayout = "NERDTree|Tagbar"
 
+" 自动打开winmanager
+let g:AutoOpenWinManager = 1
+" 这里要配合修改winmanager.vim文件:
+" 打开 winmanager/plugins/winmanager.vim ，在文件顶部加入下面的代码：
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"if g:AutoOpenWinManager 
+"    autocmd VimEnter * nested call s:ToggleWindowsManager()|1wincmd w
+"    "vim进入时自动执行 ToggleWindowsManager ，然后移动一次窗口焦点
+"endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" NerdTree
 function! NERDTree_Start()
+    exec 'q'
     exec 'NERDTree'
 endfunction
 
@@ -17,7 +28,22 @@ function! NERDTree_IsValid()
     return 1
 endfunction
 
+" TagBar
+let g:Tagbar_title = "[Tagbar]"
+function! Tagbar_Start()
+    exe 'q'
+    exe 'TagbarOpen'
+endfunction
+
+function! Tagbar_IsValid()
+    return 1
+endfunction
+
+" 在NERDTree_Start()和Tagbar_Start()中添加exec ‘q’后，无需更改winmanager。
+
+" 
 let g:winManagerWidth = 20
+let g:tagbar_vertical = 20
 let g:defaultExplorer = 1
 let g:persistentBehaviour=0          " 只剩一个窗口时, 退出vim.
 nmap <C-W><C-F> :FirstExplorerWindow<cr>
