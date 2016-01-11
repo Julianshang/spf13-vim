@@ -5,7 +5,7 @@
 " 1> vimscripts账号下的项目直接填写名称即可
 Bundle 'winmanager'
 Bundle 'molokai'
-Bundle 'tasklist.vimz'
+Bundle 'tasklist.vim'
 Bundle 'STL-improved'
 " 2>其它需填写用户/资源名称
 Bundle 'taglist.vim'
