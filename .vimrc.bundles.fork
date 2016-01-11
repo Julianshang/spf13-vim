@@ -9,5 +9,6 @@ Bundle 'tasklist.vimz'
 Bundle 'STL-improved'
 " 2>其它需填写用户/资源名称
 Bundle 'taglist.vim'
-Bundle 'davidhalter/jedi' "YouCompleteMe通过jedi来补全python
+Bundle 'davidhalter/jedi' 
+"YouCompleteMe通过jedi来补全python
 
