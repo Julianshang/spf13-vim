@@ -1,0 +1,14 @@
+" fork的spf13-vim
+
+" Plugins;
+" github上的用户写的插件:
+" 1> vimscripts账号下的项目直接填写名称即可
+Bundle 'winmanager'
+Bundle 'molokai'
+Bundle 'tasklist.vimz'
+Bundle 'STL-improved'
+" 2>其它需填写用户/资源名称
+Bundle 'majutsushi/tagbar'
+Bundle 'taglist.vim'
+Bundle 'davidhalter/jedi' "YouCompleteMe通过jedi来补全python
+

@@ -1,0 +1,62 @@
+" fork的spf13-vim版本安装的额外插件的配置
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"              winManager setting（整合nerdtree和taglist）
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:winManagerWindowLayout = "BufExplorer,FileExplorer|TagList"
+"let g:winManagerWindowLayout = "FileExplorer|TagList"
+let g:NERDTree_title = "[NERDTree]"
+let g:winManagerWindowLayout = "NERDTree|TagList"
+" 这里要配合修改winmanager.vim文件"
+" let g:AutoOpenWinManager = 1 
+
+function! NERDTree_Start()
+    exec 'NERDTree'
+endfunction
+
+function! NERDTree_IsValid()
+    return 1
+endfunction
+
+let g:winManagerWidth = 20
+let g:defaultExplorer = 1
+let g:persistentBehaviour=0          " 只剩一个窗口时, 退出vim.
+nmap <C-W><C-F> :FirstExplorerWindow<cr>
+nmap <C-W><C-B> :BottomExplorerWindow<cr>
+" <C-W>结合方向键也可以在窗口之间跳转(十分方便的用法)
+nmap <silent> <leader>wm :WMToggle<cr> 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           cscope setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=1
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+         cs add cscope.out
+    endif
+    set csverb
+endif
+    
+set cscopequickfix=g+,s+,c+,d+,i+,t+,e+
+"将cscope的查找结果通过quickfix显示出来，这样可以在使用cscope查找之后
+
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+"查找C语言符号，即查找函数名，宏，枚举值等出现的地方；
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+"查找函数，宏，枚举等定义的位置，类似ctags提供的功能；
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR> 
+"查找调用本函数的函数；
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+"查找该字符串；
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+"查找egrep模式，但查找速度快多了
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+"查找并打开文件，类似vim的find功能；
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+"查找包含（include）本文件的文件
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>    
+"查找本函数调用的函数；
