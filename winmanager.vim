@@ -12,11 +12,10 @@
 "
 " See ":help winmanager" for additional details.
 " ============================================================================
-" 
 if g:AutoOpenWinManager
-	autocmd VimEnter * nested call s:ToggleWindowsManager()|1wincmd w 
-	"vim进入时自动执行 ToggleWindowsManager ，然后移动一次窗口焦点
-endif"
+	autocmd VimEnter * nested call s:ToggleWindowsManager()|3wincmd w 
+	"vim进入时自动执行 ToggleWindowsManager，然后移动3次窗口焦点，使得光标落在要工作区中
+endif
 
 " quit if the user doesnt want us or if we are already loaded.
 if exists("loaded_winmanager")
