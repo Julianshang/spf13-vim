@@ -7,8 +7,10 @@ Bundle 'winmanager'
 Bundle 'molokai'
 Bundle 'tasklist.vim'
 Bundle 'STL-improved'
+" 需要先使用apt-get安装cscope程序，然后再使用Bundle安装vim插件cscope.vim
+" Bundle 'brookhong/cscope.vim'
 " 2>其它需填写用户/资源名称
 Bundle 'taglist.vim'
-Bundle 'davidhalter/jedi' 
+Bundle 'davidhalter/jedi'
 "YouCompleteMe通过jedi来补全python
 
