@@ -1,3 +1,8 @@
 1 git clone git@github.com:Julianshang/spf13-vim.git
 2 sh ~/.spf13-vim-3/bootstrap.sh
 3 cp ~/.spf13-vim-3/winmanager.vim ~/.vim/bundle/winmanager/plugin/
+4 YouCompleteMe库文件缺失，启动vim时提示“ycm_client_support.[so|pyd|dll] and ycm_core.[so|pyd|dll] not detected; you need to compile YCM before using it. Read the docs!”。
+  解决办法：
+  cd ~/.vim/bundle/YouCompleteMe
+  ./install.sh --clang-completer
+
